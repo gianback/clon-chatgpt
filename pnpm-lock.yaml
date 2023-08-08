@@ -5,6 +5,7 @@ specifiers:
   '@types/react': 18.2.18
   '@types/react-dom': 18.2.7
   autoprefixer: 10.4.14
+  cohere-ai: ^6.2.2
   eslint: 8.46.0
   eslint-config-next: 13.4.12
   next: 13.4.12
@@ -19,6 +20,7 @@ dependencies:
   '@types/react': 18.2.18
   '@types/react-dom': 18.2.7
   autoprefixer: 10.4.14_postcss@8.4.27
+  cohere-ai: 6.2.2
   eslint: 8.46.0
   eslint-config-next: 13.4.12_7haavtekmro7ptbnqmctjaodju
   next: 13.4.12_biqbaboplfbrettd7655fr4n2y
@@ -643,6 +645,10 @@ packages:
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+    dev: false
+
+  /cohere-ai/6.2.2:
+    resolution: {integrity: sha512-+Tq+4e8N/YWKJqFpWaULsfbZR/GOvGh8WWYFKR1bpipu8bCok3VcbTPnBmIToQiIqOgFpGk3HsA4b0guVyL3vg==}
     dev: false
 
   /color-convert/2.0.1:
