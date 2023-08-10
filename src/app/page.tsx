@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <main>
-      <div className="relative flex h-full max-w-full flex-1 overflow-hidden">
+      {/* <div className="relative flex h-full max-w-full flex-1 overflow-hidden">
         <div className="flex h-full max-w-full flex-1 flex-col">
           <main className="relative h-full w-full transition-width flex flex-col overflow-auto items-stretch flex-1">
             <h2 className="text-4xl font-semibold text-center mt-6 sm:mt-[6vh] ml-auto mr-auto mb-4 sm:mb-16 flex gap-2 items-center justify-center">
@@ -54,20 +54,7 @@ export default function Home() {
                   </div>
                 </div>
               </form>
-              <div className="pb-3 pt-2 text-center text-xs text-gray-600 dark:text-gray-300 md:px-[60px] md:pb-6 md:pt-3">
-                <span>
-                  Free Research Preview. ChatGPT may produce inaccurate
-                  information about people, places, or facts.{" "}
-                  <a
-                    href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline"
-                  >
-                    ChatGPT August 3 Version
-                  </a>
-                </span>
-              </div>
+              <div className="pb-3 pt-2 text-center text-xs text-gray-600 dark:text-gray-300 md:px-[60px] md:pb-6 md:pt-3"></div>
               <div
                 className="group absolute bottom-5 right-4 z-10"
                 data-headlessui-state=""
@@ -86,7 +73,8 @@ export default function Home() {
             </div>
           </main>
         </div>
-      </div>
+      </div> */}
+      home
     </main>
   );
 }
