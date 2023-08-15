@@ -17,10 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen overflow-hidden w-full h-full relative flex flex-col z-0">
+      <body className="min-h-screen overflow-hidden w-full h-full relative flex flex-col z-0 lg:flex-row">
         <Header />
         {children}
-        {/* <footer>Built by Gian Franco</footer> */}
       </body>
     </html>
   );
