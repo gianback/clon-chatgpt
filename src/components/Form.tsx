@@ -15,6 +15,7 @@ export function Form() {
     const formData = new FormData(form);
     const input = formData.get("input") as string;
     setPrompt({ id: window.crypto.randomUUID(), prompt: input });
+    form.reset();
     const response = await getAnswerService(input);
     setPrompt({ id: window.crypto.randomUUID(), prompt: response });
   };
@@ -28,7 +29,7 @@ export function Form() {
         <input
           name="input"
           placeholder="Send a message"
-          className="max-h-[200px] h-[25px] overflow-y-hidden text-tertiary m-0 w-full resize-none border-0 bg-transparent p-0 pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pr-12 pl-3 md:pl-0 shadow-sm"
+          className="max-h-[200px] outline-none  h-[25px] overflow-y-hidden text-tertiary m-0 w-full resize-none border-0 bg-transparent p-0 pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pr-12 pl-3 md:pl-0 shadow-sm"
         ></input>
         <button
           type="submit"

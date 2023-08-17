@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
-import "./globals.css";
 import type { Metadata } from "next";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Clone ChatGpt",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen overflow-hidden w-full h-full relative flex flex-col z-0 lg:flex-row">
+      <body className="h-screen overflow-hidden w-full relative flex flex-col z-0 lg:flex-row">
         <Header />
         {children}
       </body>
