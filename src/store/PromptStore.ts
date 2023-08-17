@@ -11,69 +11,7 @@ interface PromptState {
 }
 
 export const usePromptStore = create<PromptState>()((set) => ({
-  history: [
-    { id: "asdasdas", prompt: "qwxeqwxewqxeqwxexqwexqw" },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-    {
-      id: "asdasdas",
-      prompt: "qwxeqwxewqxeqwxexqwexqw",
-    },
-  ],
+  history: [],
   setPrompt: (newPrompt) =>
     set((state) => ({ history: state.history.concat(newPrompt) })),
 }));
