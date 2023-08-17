@@ -12,6 +12,7 @@ module.exports = {
         secondary: "#202123",
         tertiary: "#8e8ea0",
         quaternary: "#40414f",
+        quinary: "#444654",
       },
     },
   },
