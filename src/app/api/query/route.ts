@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   const resp = await cohere.generate({
     model: "command",
     prompt,
-    max_tokens: 200,
+    max_tokens: 256,
     temperature: 0.9,
     k: 0,
     stop_sequences: [],
