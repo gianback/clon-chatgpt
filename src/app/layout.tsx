@@ -1,4 +1,3 @@
-import { Header } from "@/components/Header";
 import type { Metadata } from "next";
 
 import "./globals.css";
@@ -16,11 +15,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen overflow-hidden w-full relative flex flex-col z-0 lg:flex-row">
-        <Header />
-        <NextAuthProvider>
-        {children}
-        </NextAuthProvider>
+      <body>
+        <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>
   );
