@@ -2,10 +2,10 @@
 import ReactMarkdown from "react-markdown";
 import { OpenaiIcon } from ".";
 import { useSession } from "next-auth/react";
-import { useCurrentQuery } from "@/store/CurrentQuery";
+import { useCurrentQueryStore } from "@/store/CurrentQuery";
 
 export const CurrentHistory = () => {
-  const { queryList } = useCurrentQuery();
+  const { queryList } = useCurrentQueryStore();
   const session = useSession();
 
   return (

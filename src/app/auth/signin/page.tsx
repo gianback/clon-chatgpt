@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 export default async function SignIn() {
   const session = await getServerSession(authOptions);
   if (session) {
-    redirect("/");
+    redirect("/home");
   }
   return (
     <main className="h-screen bg-primary w-full flex items-center justify-center flex-col">

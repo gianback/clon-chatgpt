@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { NextAuthProvider } from "@/components/NextAuthProvider";
+import { Header } from "@/components";
+import { History } from "@/components/History";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Clone ChatGpt",
@@ -14,8 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <NextAuthProvider>{children}</NextAuthProvider>
+      <body className="h-screen overflow-hidden w-full relative flex flex-col z-0 lg:flex-row">
+        <Header>
+          <History />
+        </Header>
+        {children}
       </body>
     </html>
   );

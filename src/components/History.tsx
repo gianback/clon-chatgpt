@@ -1,24 +1,37 @@
-import { authOptions } from "@/utilities/auth";
-import { prisma } from "@/utilities/prisma";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
+import { authOptions } from "@/utilities/auth";
+import { DialogIcon } from ".";
+import { User } from "@/interfaces/User";
+import { getHistoryByidService } from "@/services/getHistoryById.service";
+
 export async function History() {
   const session = await getServerSession(authOptions);
+  const user = (await getHistoryByidService(session?.user.id)) as User;
   if (!session) return;
-  const user = await prisma.user.findUnique({
-    where: {
-      id: session.user.id,
-    },
-    select: {
-      history: true,
-    },
-  });
+
   return (
-    <div className="flex-col flex-1 transition-opacity duration-500 overflow-y-auto">
-      {user?.history.map(({ querys, id }) => (
-        <Link key={id} href={`/query/${id}`}>
-          {querys[0]}
+    <div className="flex flex-col flex-1 transition-opacity duration-500 overflow-y-auto">
+      {user.history?.map(({ querys, id }) => (
+        <Link
+          href={`/home/query/${id}`}
+          key={id}
+          className="flex gap-4 items-center py-3 px-4 text-white"
+        >
+          <span className="flex-shrink-0">
+            <DialogIcon />
+          </span>
+          <span
+            className="block"
+            style={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {querys[0]}
+          </span>
         </Link>
       ))}
     </div>

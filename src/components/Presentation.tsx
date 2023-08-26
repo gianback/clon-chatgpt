@@ -1,17 +1,18 @@
+"use client";
 import { Form, CurrentHistory } from "@/components";
-import { useSession } from "next-auth/react";
+import { useCurrentQueryStore } from "@/store/CurrentQuery";
 
 export function Presentation() {
+  const queryList = useCurrentQueryStore((state) => state.queryList);
   return (
     <section className="relative flex min-h-[94vh] max-w-full flex-1 overflow-hidden bg-primary">
       <div className="flex h-full min-h-[94vh] max-w-full flex-1 flex-col">
         <main className="relative min-h-[inherit] w-full transition-width flex flex-col overflow-auto items-stretch flex-1">
           <h2
-            className={` text-white text-4xl font-semibold text-center mt-6 sm:mt-[6vh] ml-auto mr-auto mb-4 sm:mb-16 flex gap-2 items-center justify-center`}
+            className={`${
+              queryList.length > 0 && "hidden"
+            } text-white text-4xl font-semibold text-center mt-6 sm:mt-[6vh] ml-auto mr-auto mb-4 sm:mb-16 flex gap-2 items-center justify-center`}
           >
-            {/* ${
-              history.length > 0 && "hidden"
-            } */}
             ChatGPT
           </h2>
           <div className="h-full flex flex-col ">

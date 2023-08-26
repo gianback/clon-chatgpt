@@ -1,6 +1,20 @@
 import { prisma } from "@/utilities/prisma";
 import { NextResponse } from "next/server";
 
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("userId") as string;
+  const user = await prisma.user.findUnique({
+    where: { id },
+    select: {
+      history: true,
+    },
+  });
+
+  return NextResponse.json({
+    history: user?.history.reverse(),
+  });
+}
 export async function POST(request: Request) {
   const { historyItem, userId } = await request.json();
 
@@ -20,7 +34,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     mssg: "Query created",
-    query: queryListCreated,
+    queryCreated: queryListCreated,
   });
 }
 
@@ -36,7 +50,6 @@ export async function PATCH(request: Request) {
       },
     },
   });
-
   return NextResponse.json({
     mss: "Query added",
     query,

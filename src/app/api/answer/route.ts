@@ -15,6 +15,8 @@ export async function POST(request: Request) {
     stop_sequences: [],
     return_likelihoods: "NONE",
   });
+  //answer
   const text = resp.body.generations[0].text;
+
   return NextResponse.json(text);
 }
