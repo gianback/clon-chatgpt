@@ -25,17 +25,17 @@ export async function POST(request: Request) {
       status: 404,
     });
 
-  const queryListCreated = await prisma.historyItem.create({
-    data: {
-      querys: historyItem,
-      userId,
-    },
-  });
+  // const queryListCreated = await prisma.historyItem.create({
+  //   data: {
+  //     querys: historyItem,
+  //     userId,
+  //   },
+  // });
 
   return NextResponse.json({
     mssg: "Query created",
-    queryCreated: queryListCreated,
   });
+  // queryCreated: queryListCreated,
 }
 
 export async function PATCH(request: Request) {

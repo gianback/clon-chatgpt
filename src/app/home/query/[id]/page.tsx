@@ -1,3 +1,6 @@
+import { Overlay } from "@/components/Overlay";
+import { Presentation } from "@/components/Presentation";
+
 export default async function QueryDetails({
   params,
 }: {
@@ -7,7 +10,8 @@ export default async function QueryDetails({
   console.log(params.id);
   return (
     <main className="h-screen overflow-hidden w-full relative flex flex-col z-0 lg:flex-row">
-      details
+      <Presentation />
+      <Overlay />
     </main>
   );
 }

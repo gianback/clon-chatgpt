@@ -12,7 +12,7 @@ export async function History() {
   if (!session) return;
 
   return (
-    <div className="flex flex-col flex-1 transition-opacity duration-500 overflow-y-auto">
+    <div id="History" className="flex flex-col flex-1 transition-opacity duration-500 overflow-y-auto">
       {user.history?.map(({ querys, id }) => (
         <Link
           href={`/home/query/${id}`}
