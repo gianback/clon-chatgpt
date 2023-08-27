@@ -15,14 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        suppressHydrationWarning={true}
-        className="h-screen overflow-hidden w-full relative flex flex-col z-0 lg:flex-row"
-      >
-        <Header>
-          <History />
-        </Header>
-        {children}
+      <body>
+        <div className="h-screen overflow-hidden w-full relative flex flex-col z-0 lg:flex-row">
+          <Header>
+            <History />
+          </Header>
+          {children}
+        </div>
       </body>
     </html>
   );

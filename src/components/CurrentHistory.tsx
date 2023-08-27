@@ -9,7 +9,10 @@ export const CurrentHistory = () => {
   const session = useSession();
 
   return (
-    <ul className="w-full h-full mx-auto flex flex-col items-center overflow-y-auto">
+    <ul
+      id="CurrentHistory"
+      className="w-full h-full mx-auto flex flex-col items-center overflow-y-auto"
+    >
       {queryList?.map((prompt, index) => (
         <li
           key={prompt + index}
