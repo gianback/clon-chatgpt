@@ -8,9 +8,17 @@ import { useEffect } from "react";
 const saveData = async (id: string) => {
   const setQueryList = useCurrentQueryStore.getState().setQueryList;
   const setCurrentId = useCurrentQueryStore.getState().setCurrentId;
-  const response = await getHistoryByIdService(id);
-  setQueryList(response.querys, false);
-  setCurrentId(id);
+  const setIsLoading = useCurrentQueryStore.getState().setIsLoading;
+  try {
+    setIsLoading(true);
+    const response = await getHistoryByIdService(id);
+    setQueryList(response.querys, false);
+    setCurrentId(id);
+  } catch (error) {
+    throw new Error("Error get history by id");
+  } finally {
+    setIsLoading(false);
+  }
 };
 
 export default function QueryDetails({ params }: { params: { id: string } }) {

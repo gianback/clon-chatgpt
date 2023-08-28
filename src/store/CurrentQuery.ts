@@ -7,6 +7,8 @@ interface UseCurrentQueryStore {
   setQueryList: (queryList: string[], concat?: boolean) => void;
   firstReq: boolean;
   setFirstReq: (firstReq: boolean) => void;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
 }
 
 export const useCurrentQueryStore = create<UseCurrentQueryStore>()((set) => ({
@@ -19,4 +21,6 @@ export const useCurrentQueryStore = create<UseCurrentQueryStore>()((set) => ({
     })),
   firstReq: false,
   setFirstReq: (firstReq) => set((_state) => ({ firstReq })),
+  isLoading: false,
+  setIsLoading: (isLoading) => set((_state) => ({ isLoading })),
 }));

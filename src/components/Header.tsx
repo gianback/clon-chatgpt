@@ -3,6 +3,9 @@ import { HamburguersMenu, PlusIcon } from "./Icons";
 import { useMenuStore } from "@/store/MenuStore";
 import { HeaderBottom } from "./HeaderBottom";
 import { HeaderTopDesktop } from "./HeaderTopDesktop";
+import { useRouter } from "next/navigation";
+import { newChatUtility } from "@/utilities/newChat.utility";
+import { useCurrentQueryStore } from "@/store/CurrentQuery";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -10,10 +13,17 @@ interface HeaderProps {
 
 export function Header({ children }: HeaderProps) {
   const { menuActive, setMenuActive } = useMenuStore();
+  const queryList = useCurrentQueryStore((state) => state.queryList);
+  const router = useRouter();
+
+  const handleNewChat = () => {
+    newChatUtility();
+    router.push("/home");
+  };
 
   return (
     <header
-      className={`bg-primary relative transition-margin duration-75 lg:w-[340px] ${
+      className={`bg-primary relative transition-margin duration-75 z-10 lg:w-[340px] ${
         menuActive ? "lg:ml-0" : "lg:ml-[-340px]"
       }`}
     >
@@ -24,8 +34,8 @@ export function Header({ children }: HeaderProps) {
         >
           <HamburguersMenu />
         </button>
-        <span className="text-white">New Chat</span>
-        <button className="text-white">
+        <button className="text-white">{queryList[0] ?? "New Chat"}</button>
+        <button className="text-white" onClick={handleNewChat}>
           <PlusIcon />
         </button>
       </div>

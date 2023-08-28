@@ -1,9 +1,11 @@
 "use client";
 import { Form, CurrentHistory } from "@/components";
 import { useCurrentQueryStore } from "@/store/CurrentQuery";
+import { Spinner } from "./Spinners";
 
 export function Presentation() {
   const queryList = useCurrentQueryStore((state) => state.queryList);
+  const isLoading = useCurrentQueryStore((state) => state.isLoading);
   return (
     <section className="relative flex min-h-[94vh] max-w-full flex-1 overflow-hidden bg-primary">
       <div className="flex h-full min-h-[94vh] max-w-full flex-1 flex-col">
@@ -16,7 +18,7 @@ export function Presentation() {
             ChatGPT
           </h2>
           <div className="h-full flex flex-col ">
-            <CurrentHistory />
+            {isLoading ? <Spinner /> : <CurrentHistory />}
             <div className="h-[60px] lg:h-[90px] w-full" />
             <div className="bg-primary absolute bottom-0 left-0 w-full border-t border-tertiary md:border-transparent md:dark:border-transparent md:bg-vert-light-gradien dark:bg-gray-800 dark:md:bg-vert-dark-gradient pt-2 pb-2 md:pl-2">
               <Form />

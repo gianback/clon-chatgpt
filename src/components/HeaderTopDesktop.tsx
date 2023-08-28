@@ -1,16 +1,26 @@
 "use client";
 import { useMenuStore } from "@/store/MenuStore";
 import { CloseMenuDesk, PlusIcon, XIcon } from ".";
+import { newChatUtility } from "@/utilities/newChat.utility";
+import { useRouter } from "next/navigation";
 
 export function HeaderTopDesktop() {
   const { menuActive, setMenuActive } = useMenuStore();
+  const router = useRouter();
+  const handleNewChat = () => {
+    newChatUtility();
+    router.push("/home");
+  };
 
   return (
     <div className="mb-1 relative flex flex-row gap-2">
-      <a className="flex p-3 items-center gap-3 transition-colors duration-200 text-white cursor-pointer text-sm rounded-md border border-white/20 hover:bg-gray-500/10 h-11 flex-shrink-0 flex-grow">
+      <button
+        onClick={handleNewChat}
+        className="flex p-3 items-center gap-3 transition-colors duration-200 text-white cursor-pointer text-sm rounded-md border border-white/20 hover:bg-gray-500/10 h-11 flex-shrink-0 flex-grow"
+      >
         <PlusIcon />
         New chat
-      </a>
+      </button>
       <button
         className="absolute top-1/2 lg:hidden translate-y-[-50%] right-[-14%] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
         onClick={() => setMenuActive(!menuActive)}

@@ -1,14 +1,16 @@
 "use client";
-import { useSession } from "next-auth/react";
-import { Dots } from ".";
+import { signOut, useSession } from "next-auth/react";
+import { Dots, LogOutIcon } from ".";
+import { useState } from "react";
 
 export function HeaderBottom() {
   const { data: session } = useSession();
+  const [isLogoutMenuActive, setIsLogoutMenuActive] = useState(false);
 
   return (
-    <div className="border-t border-white/20 pt-2 empty:hidden">
-      <div className="group relative" data-headlessui-state="">
-        <button className="flex w-full items-center gap-2.5 rounded-md px-3 py-3 text-sm transition-colors duration-200 hover:bg-gray-800 group-ui-open:bg-gray-800">
+    <div className="border-t border-white/20 pt-2 empty:hidden relative">
+      <div className="group relative">
+        <div className="flex w-full items-center gap-2.5 rounded-md px-3 py-3 text-sm transition-colors duration-200 hover:bg-gray-800 group-ui-open:bg-gray-800">
           <div className="flex-shrink-0">
             {session ? (
               <picture className="relative flex justify-center align-center">
@@ -29,8 +31,28 @@ export function HeaderBottom() {
               <div className="w-40 h-8 bg-primary animate-pulse"></div>
             )}
           </div>
-          <Dots />
-        </button>
+          <button
+            className="relative"
+            onClick={() => setIsLogoutMenuActive(!isLogoutMenuActive)}
+          >
+            <Dots />
+          </button>
+        </div>
+        <div
+          className={`absolute flex gap-3 items-center left-0 right-0 top-[-100%] transition-opacity duration-200 ease-in rounded-md bg-black p-4 ${
+            isLogoutMenuActive ? "opacity-1" : "opacity-0"
+          }`}
+        >
+          <span className="flex-shrink-0 text-white">
+            <LogOutIcon />
+          </span>
+          <button
+            className="text-white flex-1 text-left"
+            onClick={() => signOut()}
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );
