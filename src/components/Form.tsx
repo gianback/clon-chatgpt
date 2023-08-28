@@ -6,11 +6,13 @@ import { useSession } from "next-auth/react";
 import { useCurrentQueryStore } from "@/store/CurrentQuery";
 import { updateQueryService } from "@/services/updateQuery.service";
 import { createAnswerService } from "@/services/getAnswer.service";
+import { useHistoryStore } from "@/store/HistoryStore";
 
 export function Form() {
   const { data: userData } = useSession();
   const [isLoading, setisLoading] = useState(false);
   const { setCurrentId, currentId, setQueryList } = useCurrentQueryStore();
+  const setHistory = useHistoryStore((state) => state.setHistory);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,6 +32,8 @@ export function Form() {
           userId: userData?.user.id,
         });
         setCurrentId(queryCreated.id);
+
+        setHistory([queryCreated]);
       } else {
         await updateQueryService({
           historyItemid: currentId,
@@ -37,8 +41,8 @@ export function Form() {
         });
       }
       setQueryList([answer]);
-    } catch (error) {
-      throw new Error("Error submit");
+    } catch (error: any) {
+      throw new Error(error);
     } finally {
       setisLoading(false);
     }
