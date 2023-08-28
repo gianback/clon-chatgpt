@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { DialogIcon } from ".";
 import { HistoryItem } from "@/interfaces/User";
-
 interface Props {
   historyItem: HistoryItem;
 }
