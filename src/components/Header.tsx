@@ -1,11 +1,10 @@
 "use client";
 import { HamburguersMenu, PlusIcon } from "./Icons";
-import { useMenuStore } from "@/store/MenuStore";
 import { HeaderBottom } from "./HeaderBottom";
 import { HeaderTopDesktop } from "./HeaderTopDesktop";
 import { useRouter } from "next/navigation";
 import { newChatUtility } from "@/utilities/newChat.utility";
-import { useCurrentQueryStore } from "@/store/CurrentQuery";
+import { useCurrentQueryStore, useMenuStore } from "@/store";
 
 interface HeaderProps {
   children: React.ReactNode;

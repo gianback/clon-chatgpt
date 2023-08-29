@@ -8,7 +8,7 @@ export function HeaderBottom() {
   const [isLogoutMenuActive, setIsLogoutMenuActive] = useState(false);
 
   return (
-    <div className="border-t border-white/20 pt-2 empty:hidden relative">
+    <section className="border-t border-white/20 pt-2 empty:hidden relative">
       <div className="group relative">
         <div className="flex w-full items-center gap-2.5 rounded-md px-3 py-3 text-sm transition-colors duration-200 hover:bg-gray-800 group-ui-open:bg-gray-800">
           <div className="flex-shrink-0">
@@ -54,6 +54,6 @@ export function HeaderBottom() {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
