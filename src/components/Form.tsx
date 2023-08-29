@@ -1,12 +1,12 @@
 "use client";
 import { FormEvent, useState } from "react";
 import { Loading, SendPromptIcon } from "./Icons";
-import { createQueryService } from "@/services/createQuery.service";
 import { useSession } from "next-auth/react";
-import { useCurrentQueryStore } from "@/store/CurrentQuery";
+import { useCurrentQueryStore, useHistoryStore } from "@/store";
+
+import { createQueryService } from "@/services/createQuery.service";
 import { updateQueryService } from "@/services/updateQuery.service";
 import { createAnswerService } from "@/services/getAnswer.service";
-import { useHistoryStore } from "@/store/HistoryStore";
 
 export function Form() {
   const { data: userData } = useSession();
@@ -21,7 +21,9 @@ export function Form() {
     const prompt = formData.get("input") as string;
     if (prompt.trim() === "") return;
     form.reset();
+
     setQueryList([prompt]);
+
     try {
       setisLoading(true);
       const answer = await createAnswerService(prompt);
@@ -31,8 +33,8 @@ export function Form() {
           historyItem: [prompt, answer],
           userId: userData?.user.id,
         });
-        setCurrentId(queryCreated.id);
 
+        setCurrentId(queryCreated.id);
         setHistory([queryCreated]);
       } else {
         await updateQueryService({
@@ -57,7 +59,7 @@ export function Form() {
         <input
           name="input"
           placeholder="Send a message"
-          className="max-h-[200px] outline-none  h-[25px] overflow-y-hidden text-tertiary m-0 w-full resize-none border-0 bg-transparent p-0 pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pr-12 pl-3 md:pl-0 shadow-sm"
+          className="max-h-[200px] outline-none  h-[25px] overflow-y-hidden text-white m-0 w-full resize-none border-0 bg-transparent p-0 pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pr-12 pl-3 md:pl-0 shadow-sm"
         ></input>
         <button
           type="submit"
