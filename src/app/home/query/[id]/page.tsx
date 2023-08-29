@@ -1,29 +1,12 @@
 "use client";
-import { Overlay } from "@/components/Overlay";
-import { Presentation } from "@/components/Presentation";
-import { getHistoryByIdService } from "@/services/getHistoryById.service";
-import { useCurrentQueryStore } from "@/store/CurrentQuery";
-import { useEffect } from "react";
 
-const saveData = async (id: string) => {
-  const setQueryList = useCurrentQueryStore.getState().setQueryList;
-  const setCurrentId = useCurrentQueryStore.getState().setCurrentId;
-  const setIsLoading = useCurrentQueryStore.getState().setIsLoading;
-  try {
-    setIsLoading(true);
-    const response = await getHistoryByIdService(id);
-    setQueryList(response.querys, false);
-    setCurrentId(id);
-  } catch (error) {
-    throw new Error("Error get history by id");
-  } finally {
-    setIsLoading(false);
-  }
-};
+import { Overlay, Presentation } from "@/components";
+import { saveQueryListUtility } from "@/utilities/saveQueryList.utility";
+import { useEffect } from "react";
 
 export default function QueryDetails({ params }: { params: { id: string } }) {
   useEffect(() => {
-    saveData(params.id);
+    saveQueryListUtility(params.id);
   }, [params.id]);
 
   return (
