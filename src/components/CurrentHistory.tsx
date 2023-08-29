@@ -1,17 +1,21 @@
 "use client";
 import ReactMarkdown from "react-markdown";
-import { OpenaiIcon } from ".";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useSession } from "next-auth/react";
-import { useCurrentQueryStore } from "@/store/CurrentQuery";
+
+import { useCurrentQueryStore } from "@/store";
+import { OpenaiIcon } from ".";
 
 export const CurrentHistory = () => {
   const { queryList } = useCurrentQueryStore();
+  const [parent] = useAutoAnimate();
   const session = useSession();
 
   return (
     <ul
       id="CurrentHistory"
       className="w-full h-full mx-auto flex flex-col items-center overflow-y-auto"
+      ref={parent}
     >
       {queryList?.map((prompt, index) => (
         <li
