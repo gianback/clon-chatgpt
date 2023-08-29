@@ -1,8 +1,7 @@
-import { authOptions } from "@/utilities/auth.utility";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { Presentation } from "@/components/Presentation";
-import { Overlay } from "@/components/Overlay";
+import { Overlay, Presentation } from "@/components";
+import { authOptions } from "@/utilities/auth.utility";
 
 export default async function Main() {
   const session = await getServerSession(authOptions);
