@@ -13,6 +13,7 @@ export async function GET(request: Request) {
   });
 
   return NextResponse.json({
+    mssg: "History found",
     history: user?.history.reverse(),
   });
 }
