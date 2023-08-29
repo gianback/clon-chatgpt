@@ -20,7 +20,7 @@ export function Presentation() {
           <div className="h-full flex flex-col ">
             {isLoading ? <Spinner /> : <CurrentHistory />}
             <div className="h-[60px] lg:h-[90px] w-full" />
-            <div className="bg-primary absolute bottom-0 left-0 w-full border-t border-tertiary md:border-transparent md:dark:border-transparent md:bg-vert-light-gradien dark:bg-gray-800 dark:md:bg-vert-dark-gradient pt-2 pb-2 md:pl-2">
+            <div className="bg-primary absolute bottom-[18px] left-0 w-full border-t border-tertiary md:border-transparent md:dark:border-transparent md:bg-vert-light-gradien dark:bg-gray-800 dark:md:bg-vert-dark-gradient pt-2 pb-2 md:pl-2">
               <Form />
             </div>
           </div>

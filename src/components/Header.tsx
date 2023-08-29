@@ -33,13 +33,22 @@ export function Header({ children }: HeaderProps) {
         >
           <HamburguersMenu />
         </button>
-        <button className="text-white">{queryList[0] ?? "New Chat"}</button>
+        <span
+          className="text-white max-w-[70%]"
+          style={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {queryList[0] ?? "New Chat"}
+        </span>
         <button className="text-white" onClick={handleNewChat}>
           <PlusIcon />
         </button>
       </div>
       <nav
-        className={`bg-secondary transition-all duration-150 bottom-0 fixed top-0 h-full z-10 lg:flex lg:relative ${
+        className={`bg-secondary transition-all max-w-xs duration-150 bottom-0 fixed top-0 h-full z-10 lg:flex lg:relative ${
           menuActive ? "left-0" : "left-[-100%] lg:left-0"
         }
          
