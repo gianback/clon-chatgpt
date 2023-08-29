@@ -1,3 +1,5 @@
+import { API_URL } from "@/config/constants";
+
 type UpdateQueryService = {
   historyItemid: string;
   newQuery: string[];
@@ -6,7 +8,8 @@ export const updateQueryService = async ({
   historyItemid,
   newQuery,
 }: UpdateQueryService) => {
-  const resp = await fetch("http://localhost:3000/api/history", {
+  console.log({ API_URL });
+  const resp = await fetch(`${API_URL}/api/history`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

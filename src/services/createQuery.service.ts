@@ -1,3 +1,5 @@
+import { API_URL } from "../config/constants";
+
 type CreateQueryServiceProps = {
   historyItem: string[];
   userId: string;
@@ -6,7 +8,7 @@ export const createQueryService = async ({
   historyItem,
   userId,
 }: CreateQueryServiceProps) => {
-  const resp = await fetch("http://localhost:3000/api/history", {
+  const resp = await fetch(`${API_URL}/api/history`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
