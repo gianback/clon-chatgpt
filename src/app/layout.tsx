@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { NextAuthProvider } from "@/components/NextAuthProvider";
+import { NextAuthProvider } from "@/components";
 
 export const metadata: Metadata = {
   title: "Clone ChatGpt",
@@ -14,7 +14,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* suppressHydrationWarning={true} */}
       <body>
         <NextAuthProvider>{children}</NextAuthProvider>
       </body>
