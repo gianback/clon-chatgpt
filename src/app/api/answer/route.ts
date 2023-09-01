@@ -1,6 +1,6 @@
 import cohere from "cohere-ai";
 import { NextResponse } from "next/server";
-
+import { getToken } from "next-auth/jwt"
 cohere.init(process.env.COHERE_API_KEY as string);
 
 export async function POST(request: Request) {
@@ -15,6 +15,9 @@ export async function POST(request: Request) {
     stop_sequences: [],
     return_likelihoods: "NONE",
   });
+  const token = await getToken()
+  console.log("JSON Web Token", token)
+
   //answer
   const text = resp.body.generations[0].text;
 
