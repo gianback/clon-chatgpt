@@ -1,12 +1,12 @@
 import { HistoryList } from "./HistoryList";
+import { userStore } from "@/store/userStore";
+
 import { getHistoryByUseridService } from "@/services/getHistoryByUserId.service";
 import { HistoryStoreInitializer } from "./HistoryStoreInitializer";
 
-interface Props {
-  id: string;
-}
-export async function HistorySection({ id }: Props) {
-  const data = await getHistoryByUseridService(id);
+export async function HistorySection() {
+  const userId = userStore.getState().id;
+  const data = await getHistoryByUseridService(userId);
 
   return (
     <section className="flex-1">
