@@ -4,7 +4,7 @@ export * from "./Form";
 export * from "./Header";
 export * from "./HeaderBottom";
 export * from "./HeaderTopDesktop";
-export * from "./History";
+export * from "./HistorySection";
 export * from "./HistoryItem";
 export * from "./Icons";
 export * from "./NextAuthProvider";
