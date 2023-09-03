@@ -1,12 +1,15 @@
 "use client";
 import { FormEvent, useState } from "react";
-import { Loading, SendPromptIcon } from "./Icons";
 import { useSession } from "next-auth/react";
+import { Loading, SendPromptIcon } from "./Icons";
 import { useCurrentQueryStore, useHistoryStore } from "@/store";
 
-import { createQueryService } from "@/services/createQuery.service";
-import { updateQueryService } from "@/services/updateQuery.service";
-import { createAnswerService } from "@/services/getAnswer.service";
+import {
+  createQueryService,
+  createAnswerService,
+  updateQueryService,
+} from "@/services";
+import { CreateQueryError } from "@/utilities/errors.utility";
 
 export function Form() {
   const { data: userData } = useSession();
@@ -16,16 +19,20 @@ export function Form() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const form = e.currentTarget;
     const formData = new FormData(form);
     const prompt = formData.get("input") as string;
+
     if (prompt.trim() === "") return;
+
     form.reset();
 
     setQueryList([prompt]);
 
     try {
       setisLoading(true);
+
       const answer = await createAnswerService(prompt);
 
       if (!currentId) {
@@ -44,7 +51,7 @@ export function Form() {
       }
       setQueryList([answer]);
     } catch (error: any) {
-      throw new Error(error);
+      throw new CreateQueryError("Error creating query");
     } finally {
       setisLoading(false);
     }
@@ -59,12 +66,12 @@ export function Form() {
         <input
           name="input"
           placeholder="Send a message"
-          className="max-h-[200px] outline-none  h-[25px] overflow-y-hidden text-white m-0 w-full resize-none border-0 bg-transparent p-0 pr-10 focus:ring-0 focus-visible:ring-0 dark:bg-transparent md:pr-12 pl-3 md:pl-0 shadow-sm"
+          className="max-h-[200px] outline-none  h-[25px] overflow-y-hidden text-white m-0 w-full resize-none border-0 bg-transparent p-0 pr-10 focus:ring-0 focus-visible:ring-0 md:pr-12 pl-3 md:pl-0 shadow-sm"
         ></input>
         <button
           type="submit"
           disabled={isLoading}
-          className="top-[50%] cursor-pointer translate-y-[-50%] absolute flex items-center justify-center p-1 rounded-md md:bottom-3 md:p-2 md:right-3 dark:hover:bg-gray-900 dark:disabled:hover:bg-transparent right-2 disabled:text-gray-400 enabled:bg-brand-purple text-white bottom-1.5 transition-colors disabled:opacity-40"
+          className="top-[50%] cursor-pointer translate-y-[-50%] absolute flex items-center justify-center p-1 rounded-md md:bottom-3 md:p-2 md:right-3  right-2 disabled:text-gray-400 enabled:bg-brand-purple text-white bottom-1.5 transition-colors disabled:opacity-40"
         >
           {isLoading ? <Loading /> : <SendPromptIcon />}
         </button>
